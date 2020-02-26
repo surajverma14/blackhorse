@@ -1,0 +1,542 @@
+{% extends "startup/base.html" %}
+
+{% block content %}
+    
+
+    {% include "startup/includes/sidebar.html" %}
+    {% load staticfiles %}
+    
+        <main class="o-page__content">
+            
+            <div class="container">
+                <h3 style="text-align: center;color:black;margin-top: 20px;">Account Settings</h3>
+                <div class="row u-mb-large">
+                    <div class="col-12">
+                        <div class="c-tabs">
+                        
+                            <ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs" id="myTab" role="tablist">
+                                <li class="c-tabs__item"><a class="c-tabs__link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Entity Details</a></li>
+
+                                <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Founder & Co-Founder Details</a></li>
+
+                                <li class="c-tabs__item"><a class="c-tabs__link" id="nav-upload-tab" data-toggle="tab" href="#nav-upload" role="tab" aria-controls="nav-upload" aria-selected="false">Uploads Section</a></li>
+
+<!--                                 <li class="c-tabs__item"><a class="c-tabs__link" id="nav-fund-tab" data-toggle="tab" href="#nav-fund" role="tab" aria-controls="nav-fund" aria-selected="false">Funding Details</a></li> -->
+
+                            </ul>
+
+                            <div class="c-tabs__content tab-content" id="nav-tabContent">
+                                <div class="c-tabs__pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                	<form method="post" action="startup_entity_submission/" enctype="multipart/form-data">
+                                	   {% csrf_token %}	
+                                    <div class="row">
+                                        <div class="col-lg-3 u-text-center">
+                                            <div class="c-avatar c-avatar--xlarge u-inline-block">
+                                                <img class="c-avatar__img" src="{{user.entity.startup_logo.url}}" alt="Avatar">
+                                            </div>
+                                            
+                                            <a class="u-block u-color-primary"> <input type="file" name="logo" accept="image/*"> </a>
+
+                                        </div>
+
+                                        <div class="col-lg-5">
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="firstName">Entity Name</label> 
+                                                <input class="c-input" type="text" id="firstName" name="startup_entity_name" placeholder="Company Name" required>
+                                                 
+                                            </div>
+
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="lastName" required>Contact Number</label> 
+                                                <input class="c-input" type="text" id="lastName" name="startup_contact_number" placeholder="Contact Number" required> 
+                                            </div>
+
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="bio">Startup Bio</label>
+                                                <textarea class="c-input" id="bio" name="startup_bio" placeholder="About Company" required></textarea>
+                                            </div>
+                                            
+                                            <div class="c-field u-mb-medium">
+                                                <label class="c-field__label" for="select3">Stage</label>
+                                                <select class="c-select c-select" id="select12"  name="startup_stage" >
+                                                    <option>Idea Stage</option>
+                                                    <option>Early Stage </option>
+                                                    <option>Seed Stage</option>
+                                                    <option>Series A</option>
+                                                    
+                                                </select>    
+                                            </div>
+
+                    
+                
+                                            <div class="c-field u-mb-medium">
+                                                <label class="c-field__label" for="websiteOther">Business Model</label>
+                                                <select class="c-select c-select" id="select11" name="startup_business_model">
+                                                    
+                                                    <option>B2C</option>
+                                                    <option>B2B</option>
+                                                    <option>B2B2C</option>
+                                                </select>             
+                                                
+                                            </div> 
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="bio">How are you disrupting ?</label>
+                                                <textarea class="c-input" id="bio" name="startup_disruption" placeholder="Innovative" required></textarea>
+                                            </div>
+                                            <label class="c-field__label" for="socialProfile">Social Profiles</label>
+                                            <!--
+                                            <div class="c-field has-addon-left u-mb-small">
+                                                <span class="c-field__addon u-bg-twitter">
+                                                    <i class="fa fa-instagram u-color-white"></i>
+                                                </span>
+                                                <input class="c-input" id="socialProfile" name="startup_instagram" type="text" placeholder="www.instagram.com/Clark" required >
+                                            </div>
+                                            -->
+                                            <div class="c-field has-addon-left">
+                                                <span class="c-field__addon u-bg-facebook">
+                                                    <i class="fa fa-linkedin u-color-white"></i>
+                                                </span>
+                                                <input class="c-input" name="startup_linkedin" type="text" placeholder="Please enter startup_linkedin" required>
+                                            </div>
+                                            <br><br>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="companyName">Startup / Brand Name</label>
+                                                <input class="c-input" id="companyName" name="startup_brand_name" type="text" placeholder="Brand Name" required>
+                                            </div>
+                                         <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="select2">Sector</label>
+                                                  <!-- Select2 jquery plugin is used -->
+                                                     <select class="c-select c-select has-search" id="select2" name="startup_industry"  required>
+                                                       
+                                                        <option>Consumer</option>
+                                                        <option>Education</option>
+                                                        <option>Finance</option>
+                                                        <option>Healthcare</option>
+                                                        <option>Internet</option>
+                                                        <option>IT Services</option>
+                                                        <option>Logistics</option>
+                                                        <option>Mobile</option>
+                                                        <option>Saas</option>
+
+<!--                                                          <option>Advertising</option>
+                                                         <option>Aerospace & Defence / Aeronautics</option>
+                                                         <option>Agriculture</option>
+                                                         <option>AI</option>
+                                                         <option>Analytics</option>
+                                                         <option>Animation</option>
+                                                         <option>AR/VR/MR</option>
+                                                         <option>Architecture/Interior Design</option>
+                                                         <option>Art & photography</option>
+                                                         <option>Automotive</option>
+                                                         <option>Chemicals</option>
+                                                         <option>Telecommunications & Networking</option>
+                                                         <option>Computer Vision</option>
+                                                         <option>Construction</option>
+                                                         <option>Dating / Matrimonial</option>
+                                                         <option>Design</option>
+                                                         <option>Education</option>
+                                                         <option>Renewable Energy</option>
+                                                         <option>Non-Renewable Energy</option>
+                                                         <option>Green Technology</option>
+                                                         <option>Enterprise Software</option>
+                                                         <option>Events</option>
+                                                         <option>Fashion</option>
+                                                         <option>Finance Technology</option>
+                                                         <option>Food & beverage</option>
+                                                         <option>Technology Hardware</option>
+                                                         <option>Healthcare & Life Sciences</option>
+                                                         <option>human Resources</option>
+                                                         <option>IOT</option>
+                                                         <option>IT Services</option>
+                                                         <option>Marketing</option>
+                                                         <option>Media Entertainment/option>
+                                                         <option>Nanotechnology</option>
+                                                         <option>Pets & Animals</option>
+                                                         <option>Professional & commercial Services</option>
+                                                         <option>Real Estate</option>
+                                                         <option>Retail</option>
+                                                         <option>Robotics</option>
+                                                         <option>Safety</option>
+                                                         <option>Security Solutions</option>
+                                                         <option>Household services</option>
+                                                         <option>Social impact</option>
+                                                         <option>Social Network</option>
+                                                         <option>Sports</option>
+                                                         <option>Textiles & Apparel</option>
+                                                         <option>Transportation & storage</option>
+                                                         <option>Travel & Tourism</option>
+                                                         <option>Others</option> -->
+                                                     </select>
+                                         </div>
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="bio">Mention Board of Advisors (If any)</label>
+                                                <textarea class="c-input" id="bio" name="startup_advisors" placeholder="Board of advisors"></textarea>
+                                            </div>
+                                            <div class="c-field u-mb-medium">
+                                                <label class="c-field__label" for="select13">Location</label>
+                                                <select class="c-select c-select" id="select14" name="startup_location">
+                                                    <option>India & South East Asia</option>
+                                                    <option>Europe</option>
+                                                    <option>Middle East</option>
+                                                    
+                                                    <option>USA</option>
+                                                    
+                                                </select>    
+
+                                            </div>
+                                            <div class="c-field u-mb-medium">
+                                                <label class="c-field__label" for="select3">Funding Need (USD)</label>
+                                                <select class="c-select c-select" id="select10" name="startup_funding_need">
+                                                    
+                                                    <option>$10,000 - $50,000</option>
+                                                    <option>$50,000 - $1,00,000</option>
+                                                    <option>$1,00,000 - $5,00,000</option>
+                                                    <option>$5,00,000 - $2,000,000 </option>
+                                                    <option>$2,000,000 & above </option>
+                                                </select>    
+
+                                            </div>
+                                            
+                                            
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="email">Webiste Address</label>
+                                                <input class="c-input" id="startup_website" name="startup_website" type="text" placeholder="WebSite Link" required>
+                                            </div>
+
+                                            
+                                        </div>
+
+                                        <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Save</button>
+                                    </form>    
+                                    </div>
+                                </div>
+
+
+                                <div class="c-tabs__pane" id="nav-upload" role="tabpanel" aria-labelledby="nav-upload-tab">
+                                    <div class="row">
+                                        <div class="col-sm-4 u-mb-medium">
+
+                                        <form method="post" action="startup_deck_submission/" enctype="multipart/form-data">
+                                        {% csrf_token %} 
+                                            <input class ="c-btn" type="file" name="deck"><br>
+                                            
+                                            <small>File Format - PDF/PPT</small> ||
+                                            <small>File Size max - 15 MB</small>
+                                            <a href="{{user.upload_pitch_deck.upload_pitch_deck.url}}"><br> View Uploaded Deck</a><br><br>
+                                            <button class ="c-btn" type="submit">
+                                              Submit Pitch Deck
+                                            </button><br>
+                                         </form>
+                                         </div>
+
+                                        <div class="col-sm-4 u-mb-medium">
+                                        <form method="post" action="startup_video_submission/" enctype="multipart/form-data">
+                                            {% csrf_token %} 
+                                            <input class ="c-btn" type="file" name="video"><br>
+                                            
+                                            <small>Video length max - 4 Minutes</small> || 
+                                            <small>Video size max - 500 MB</small>
+                                            <a href="{{user.upload_video_pitch.upload_video_pitch.url}}"><br> View Uploaded Video</a><br><br>
+                                            <button class ="c-btn" type="submit">
+                                              Submit Video pitch
+                                            </button>
+                                         </form>
+                                        </div>
+                                        <div class="col-sm-4 u-mb-medium">
+                                            
+                                            <form method="post" action="startup_finan_submission/" enctype="multipart/form-data">
+                                            {% csrf_token %} 
+                                            <input class ="c-btn" type="file" name="finan"><br> 
+                                            <small>File format - Excel</small> || 
+                                            <small>File size max - 5 MB</small>
+                                            <a href="{{user.upload_financials.upload_financials.url}}"><br> View Uploaded Financials</a><br><br>    
+                                            <button class ="c-btn" type="submit">
+                                              Submit Financials
+                                            </button>
+                                        
+                                         </form>
+                                        </div>
+                                    </div>
+                                </div>
+                  <div class="c-tabs__pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <h3>Founder Details</h3>
+                                    <form action="startup_founder_submission/" method="post">
+                                    {% csrf_token %}	
+                                    <div class="row">
+
+                                        <div class="col-lg-5">
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="firstNameOther">Founder First Name</label> 
+                                                <input class="c-input" type="text" id="firstNameOther" name="founder_first_name" placeholder="{{user.entity.founder_first_name}}" required> 
+                                            </div>
+
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="lastNameOther">Founder Last Name</label> 
+                                                <input class="c-input" type="text" id="lastNameOther" name="founder_last_name" placeholder="Clark" required> 
+                                            </div>
+
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="bioOther">Founder Prior Startups / Work Experience (if any)</label>
+                                                <textarea class="c-input" id="bioOther" name="founder_prior" required="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                            </div>
+
+                                            <label class="c-field__label" for="socialProfileOther">Founder Social Profiles</label>
+
+                                            <div class="c-field has-addon-left u-mb-small">
+                                                <span class="c-field__addon u-bg-twitter">
+                                                    <i class="fa fa-linkedin u-color-white"></i>
+                                                </span>
+                                                <input class="c-input" id="socialProfileOther" name="founder_linkedin" type="text" placeholder="Clark" required>
+                                            </div>
+
+                                            <div class="c-field has-addon-left">
+                                                <span class="c-field__addon u-bg-facebook">
+                                                    <i class="fa fa-instagram u-color-white"></i>
+                                                </span>
+                                                <input class="c-input" name="founder_instagram" type="text" placeholder="Clark" >
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="companyNameOther">Founder Mobile Number</label>
+                                                <input class="c-input" id="companyNameOther" name="founder_contact_number" type="text" placeholder="1234567890" required>
+                                            </div>
+
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="websiteOther">Founder Equity Ownership(%)</label>
+                                                <input class="c-input" id="websiteOther" name="founder_equity" type="text" placeholder="55%" required>
+                                            </div>  
+
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="bioOther">Founder Higher Education</label>
+                                                <textarea class="c-input" id="bioOther" name="founder_education" required>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                            </div>
+
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="bioOther">Founder Achievements</label>
+                                                <textarea class="c-input" id="bioOther" name="founder_achievements" required>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                            </div>
+                                        </div>                                        
+                                    </div> 
+                                    
+                                    <div class="container">
+                                        <div class="row u-mb-large">
+                                            <div class="col-12">
+                                                <div class="c-tabs">
+                                                
+                                                    <ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs" id="myTab" role="tablist">
+                                                        <li class="c-tabs__item"><a class="c-tabs__link" id="nav-2-tab" data-toggle="tab" href="#nav-2" role="tab" aria-controls="nav-2" aria-selected="true">Add CoFounder 2</a></li>
+
+                                                        <li class="c-tabs__item"><a class="c-tabs__link" id="nav-3-tab" data-toggle="tab" href="#nav-3" role="tab" aria-controls="nav-3" aria-selected="false">Add Cofounder 3</a></li>
+
+                                                        <li class="c-tabs__item"><a class="c-tabs__link" id="nav-4-tab" data-toggle="tab" href="#nav-4" role="tab" aria-controls="nav-4" aria-selected="false">Add Cofounder 4</a></li>
+
+                                                    </ul>
+
+                                                    <div class="c-tabs__content tab-content" id="nav-tabContent">
+                                                        <div class="c-tabs__pane" id="nav-2" role="tabpanel" aria-labelledby="nav-2-tab">
+                                                            <div class="row">
+
+                                                                <div class="col-lg-5">
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="firstNameOther">CoFounder2 First Name</label> 
+                                                                        <input class="c-input" type="text" id="firstNameOther" placeholder="Jason"> 
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="lastNameOther">CoFounder2 Last Name</label> 
+                                                                        <input class="c-input" type="text" id="lastNameOther" placeholder="Clark"> 
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder2 Prior Startups / Work Experience (if any)</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+
+                                                                    <label class="c-field__label" for="socialProfileOther">CoFounder2 Social Profiles</label>
+
+                                                                    <div class="c-field has-addon-left u-mb-small">
+                                                                        <span class="c-field__addon u-bg-twitter">
+                                                                            <i class="fa fa-linkedin u-color-white"></i>
+                                                                        </span>
+                                                                        <input class="c-input" id="socialProfileOther" type="text" placeholder="Clark">
+                                                                    </div>
+
+                                                                    <div class="c-field has-addon-left">
+                                                                        <span class="c-field__addon u-bg-facebook">
+                                                                            <i class="fa fa-instagram u-color-white"></i>
+                                                                        </span>
+                                                                        <input class="c-input" type="text" placeholder="Clark">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="companyNameOther">CoFounder2 Mobile Number</label>
+                                                                        <input class="c-input" id="companyNameOther" type="text" placeholder="1234567890">
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="websiteOther">CoFounder2 Equity Ownership(%)</label>
+                                                                        <input class="c-input" id="websiteOther" type="text" placeholder="55%">
+                                                                    </div>  
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder2 Higher Education</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder2 Achievements</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+                                                                </div>                                        
+                                                            </div> 
+                                                                
+                                                        </div>
+                                                        <div class="c-tabs__pane" id="nav-3" role="tabpanel" aria-labelledby="nav-3-tab">
+                                                            <div class="row">
+
+                                                                <div class="col-lg-5">
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="firstNameOther">CoFounder3 First Name</label> 
+                                                                        <input class="c-input" type="text" id="firstNameOther" placeholder="Jason"> 
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="lastNameOther">CoFounder3 Last Name</label> 
+                                                                        <input class="c-input" type="text" id="lastNameOther" placeholder="Clark"> 
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder3 Prior Startups / Work Experience (if any)</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+
+                                                                    <label class="c-field__label" for="socialProfileOther">CoFounder3 Social Profiles</label>
+
+                                                                    <div class="c-field has-addon-left u-mb-small">
+                                                                        <span class="c-field__addon u-bg-twitter">
+                                                                            <i class="fa fa-linkedin u-color-white"></i>
+                                                                        </span>
+                                                                        <input class="c-input" id="socialProfileOther" type="text" placeholder="Clark">
+                                                                    </div>
+
+                                                                    <div class="c-field has-addon-left">
+                                                                        <span class="c-field__addon u-bg-facebook">
+                                                                            <i class="fa fa-instagram u-color-white"></i>
+                                                                        </span>
+                                                                        <input class="c-input" type="text" placeholder="Clark">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="companyNameOther">CoFounder3 Mobile Number</label>
+                                                                        <input class="c-input" id="companyNameOther" type="text" placeholder="1234567890">
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="websiteOther">CoFounder3 Equity Ownership(%)</label>
+                                                                        <input class="c-input" id="websiteOther" type="text" placeholder="55%">
+                                                                    </div>  
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder3 Higher Education</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder3 Achievements</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+                                                                </div>                                        
+                                                            </div> 
+                                                                
+                                                        </div>
+                                                        <div class="c-tabs__pane" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab">
+                                                            <div class="row">
+
+                                                                <div class="col-lg-5">
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="firstNameOther">CoFounder4 First Name</label> 
+                                                                        <input class="c-input" type="text" id="firstNameOther" placeholder="Jason"> 
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="lastNameOther">CoFounder4 Last Name</label> 
+                                                                        <input class="c-input" type="text" id="lastNameOther" placeholder="Clark"> 
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder4 Prior Startups / Work Experience (if any)</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+
+                                                                    <label class="c-field__label" for="socialProfileOther">CoFounder4 Social Profiles</label>
+
+                                                                    <div class="c-field has-addon-left u-mb-small">
+                                                                        <span class="c-field__addon u-bg-twitter">
+                                                                            <i class="fa fa-linkedin u-color-white"></i>
+                                                                        </span>
+                                                                        <input class="c-input" id="socialProfileOther" type="text" placeholder="Clark">
+                                                                    </div>
+
+                                                                    <div class="c-field has-addon-left">
+                                                                        <span class="c-field__addon u-bg-facebook">
+                                                                            <i class="fa fa-instagram u-color-white"></i>
+                                                                        </span>
+                                                                        <input class="c-input" type="text" placeholder="Clark">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-5">
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="companyNameOther">CoFounder4 Mobile Number</label>
+                                                                        <input class="c-input" id="companyNameOther" type="text" placeholder="1234567890">
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="websiteOther">CoFounder4 Equity Ownership(%)</label>
+                                                                        <input class="c-input" id="websiteOther" type="text" placeholder="55%">
+                                                                    </div>  
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder4 Higher Education</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+
+                                                                    <div class="c-field u-mb-small">
+                                                                        <label class="c-field__label" for="bioOther">CoFounder4 Achievements</label>
+                                                                        <textarea class="c-input" id="bioOther">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dignissimos, et qui, dolorem aspernatur quos vitae delectus libero quam inventore.</textarea>
+                                                                    </div>
+                                                                </div>                                        
+                                                            </div> 
+                                                                
+                                                        </div>
+
+
+
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div><!-- // .col-12 -->
+                                        </div>
+                                        
+                                    </div>  <!-- // .container -->
+
+                                    <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Save</button>                                 
+                                	</form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div><!-- // .col-12 -->
+                </div>
+            
+        </main>
+        
+        <!-- Main javascsript -->
+       
+  
+{% endblock %}
+ 

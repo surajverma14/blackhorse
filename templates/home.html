@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+  <main>
+      <div class="field field--name-field-layouts field--type-entity-reference-revisions field--label-hidden field--items">
+        <div class="field--item"><aside class="fill-wrapper content streamer">
+<ul class="banner cycle-slideshow"
+      data-cycle-slides="li"
+      data-cycle-fx=fade
+      data-cycle-pager=".gauge"
+      data-cycle-auto-height="calc"
+      data-cycle-timeout=6000>
+        <li>
+      <img src="{% static '/img/boardmeeting.jpg' %}">
+      <div class="blind"></div>
+      <div class="container">
+          <div class="row copyContainer">
+              <div class="copy smallBanner" > 
+                  <div class="message">
+                    <h2 class="sideBorder">We’re Blackhorse Capital </h2>
+                    <div class="msg-descp"><h5>India's leading AI based engagement platform for startups and investors.
+                      </h5>
+</div>
+                                            </div>
+                  <p>&nbsp;<br>
+                    &nbsp;<br>
+                    &nbsp;<br>
+                    &nbsp;</p>
+              </div>
+          </div>
+      </div>
+  </li>
+    </ul>
+</aside></div>
+        <div class="field--item"><!-- Flip Flop Section starts here -->
+
+<!-- condition for button layout starts here -->
+
+<!-- condition for button layout ends here -->
+
+<main class="prime clearfix flip-flop">
+        <div class="half">
+      <img src="{% static '/img/investorc.jpg' %}" class="flexible">
+  </div>
+        <div class="half">
+      <div class="pseudoColumn">
+          <div class="inLeft">
+              <div class="curb">
+                <h3>
+      <div class="field field--name-field-flip-flop-top-left-heading field--type-string field--label-hidden field--item">Investors</div>
+</h3>
+      <div class="flip-flop-des">
+      <div class="field field--name-field-flip-flop-top-left-desc field--type-text-long field--label-hidden field--item"><p>
+       AI engine which shows up the startups based on your investment thesis which is personalised and unique to you. Cutting through the noise !<br><br> We deliever recommendation and prediction system based on various parameters which help you analyse & make the bets that are worth it .</p></div>
+</div>
+                          <a href="#" class=" learnMore "></a>
+                          </div>
+          </div>
+      </div>
+  </div>
+  <br class="clear">
+      <div class="half odd">
+      <img src="{% static '/img/startupc.jpeg' %}"  class="flexible">
+  </div>
+              <div class="half odd">
+      <div class="pseudoColumn odd">
+          <div class="inRight">
+            <h3>
+      <div class="field field--name-field-flip-flop-top-r-heading field--type-string field--label-hidden field--item">Startups</div>
+</h3>
+            <div class="flip-flop-des">
+      <div class="field field--name-field-field-flip-flop-top-right- field--type-text-with-summary field--label-hidden field--item"><p>AI platfrom with minimal human intervention and provides the investors according to your nature and funding requirements.Save yourself time & energy!<br></div>
+</div>
+                    <a href="#" class="learnMore"></a>
+                  </div>
+      </div>
+  </div>
+</main>
+<!-- Flip Flop Section ends here --></div>
+    </div>
+   
+  </main>
+ 
+
+{% endblock content %}
+
+

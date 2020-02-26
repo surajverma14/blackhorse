@@ -1,0 +1,160 @@
+
+{% extends "startup/base.html" %}
+
+    {% block content %}
+    {% include "startup/includes/sidebar.html" %}
+    {% load staticfiles %}
+ 
+      
+       
+    <!-- sjflajljaj;fjajfjsljdlfkjljeflkleaflaeljfl -->
+    <div class="container">
+        <div class="row  u-justify-center">
+            <div class="col-lg-8 order-lg-2">
+                <div class="tab-content py-4">
+                    <div class="tab-pane active" id="profile">
+                        <h5 class="mb-3">User Profile</h5>
+                        <div class="row">
+                            <div class="col-md-6 col-md-12 col-md-4"></div>
+                            <span style="margin-left: 25px;">
+                                <h6 class="mt-2">Company Logo({{user.entity.startup_entity_name}}):</h6>
+                                <img src="{{user.entity.startup_logo.url}}" class="img-thumbnail d-block" height="60px" width="70px" alt="avatar">
+                            </span>
+                           
+                             </div>
+                            <div class="col-md-6 col-md-12 col-md-4">
+                                
+                                <h6>Company Name:</h6>
+                                <p>
+                                    {{user.entity.startup_entity_name}}
+                                </p>
+                                <h6>About Company:</h6>
+                                <p>
+                                    {{user.entity.startup_bio}}
+                                </p>
+                                <h6>Website:</h6>
+                                <p>
+                                    <Link>{{user.entity.startup_website}}</Link>
+                                </p>
+                                <h6>Contact Details:</h6>
+                                <p>
+                                        {{user.entity.startup_contact_number}}<br>
+                                        {{user.entity.startup_linkedin}}<br>
+                                </p>
+                                <h6>Founder Details:</h6>
+                                <p>
+                                        {{user.founder.founder_first_name}} {{user.founder.founder_last_name}}<br>
+                                        
+                                        {{user.founder.founder_linkedin}}<br>
+                                        {{user.founder.founder_contact_number}}<br>
+                                </p>
+                            </div>
+                          
+                            <div class="col-md-12">
+                                <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>Startup Details</h5>
+                                <table class="table table-sm table-hover table-striped">
+                                    <tbody>                                    
+                                        <tr>
+                                            <td>
+                                                <strong>Stage:</strong>
+                                            </td>
+                                            <td>
+                                                <strong>{{user.entity.startup_stage}}</strong> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Industry:</strong>
+                                            </td>
+                                            <td>
+                                                <strong>{{user.entity.startup_industry}}</strong> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Geography:</strong> 
+                                            </td>
+                                            <td>
+                                                <strong>{{user.entity.startup_location}}</strong> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Business Model</strong> 
+                                            </td>
+                                            <td>
+                                                <strong>{{user.entity.startup_business_model}}</strong> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Funding Amount</strong> 
+                                            </td>
+                                            <td>
+                                                <strong>{{user.entity.startup_funding_need}}</strong> 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <div class="alert alert-info alert-dismissable">
+                          <strong>Startup Files</strong>
+                        </div>
+                        <table class="table table-hover table-striped">
+                            <tbody>                                    
+                                <tr>
+                                    <td>
+                                       <span class="float-left font-weight-bold">Pitch Deck:</span> 
+                                       
+                                    </td>
+                                    <td>
+                                        <a href="{{user.upload_pitch_deck.upload_pitch_deck.url}}" download>
+                                            <strong> link to Deck</strong>
+                                        </a>
+                                     
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="float-left font-weight-bold">Pitch Video:</span> 
+                                        
+                                     </td>
+                                     <td>
+                                        <video width="80" height="50" controls>
+                                            <source src="{{user.upload_video_pitch.upload_video_pitch.url}}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                                </video>
+                                        
+                                     </td>
+                                     
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="float-left font-weight-bold">Financial Douments:</span> 
+                                        
+                                     </td>
+                                     <td>
+                                        <a href="{{user.upload_financials.upload_financials.url}}" download>
+                                           <strong> link to Financial</strong>
+                                        </a>
+                                        
+                                     </td>
+                                     
+                                </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                 
+                </div>
+            </div>
+        
+        </div>
+    
+{% endblock %}
+
+

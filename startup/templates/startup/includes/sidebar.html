@@ -1,0 +1,31 @@
+    
+    {% block content %}
+    {% load staticfiles %}
+   
+    
+    <div class="sidebar" id='side'>
+        <div style="background-color:white;padding-top:30px;" >
+            <h3 style="text-align: center;color:black; ">Dashboard</h3>
+        </div>
+        
+        <a href="{% url 'startup'%}" class="link"><i class="fa fa-fw fa-wrench"></i> Account Settings</a>
+        <a href="{% url 'sprofile'%}" class="link"><i class="fa fa-fw fa-user"></i> Profile</a>
+        <a href="{% url 'startup_opportunity'%}" class="link"><i class="fa fa-fw fa-envelope"></i>Opportunity</a>
+        <a href="{% url 'account_logout'%}" class="link"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        <!-- <ul class="nav nav-sidebar">
+            <li class="active"><a href="{% url 'startup'%}" class="active"><i class="fa fa-fw fa-wrench"></i> Account Settings</a>
+            </li>
+            <li> <a href="{% url 'sprofile'%}" class=""><i class="fa fa-fw fa-user"></i> Profile</a>
+            </li>
+            <li> <a href="{% url 'startup_opportunity'%}" class=""><i class="fa fa-fw fa-envelope"></i>Opportunity</a>
+            </li>
+            <li>
+                <a href="{% url 'account_logout'%}" class=""><i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+          </ul> -->
+    </div>
+
+    
+  
+    <script type="text/javascript" src="{% static 'js/sidebar.js' %}"></script> 
+    {% endblock content %}

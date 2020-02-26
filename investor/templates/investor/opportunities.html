@@ -1,0 +1,39 @@
+
+{% extends "investor/base.html" %} 
+
+{% block content %}   
+{% include "investor/includes/sidebar.html" %}
+{% load staticfiles %}
+ 
+        <main class="o-page__content">
+            <div class="container">
+                <div class="row u-mb-large">
+                    <div class="col-12">
+
+                {% for g in entity %}
+                    {% if user.investorthesis.investor_industry == g.startup_industry %}
+                    {% if user.investorthesis.investor_stage == g.startup_stage %}
+                    {% if user.investorthesis.investor_ticket_size == g.startup_funding_need %}
+                    {% if user.investorthesis.investor_geography == g.startup_location %}
+                    {% if user.investorthesis.investor_business_model == g.startup_business_model %}
+                    
+                        
+                        <a href="{% url 'startup-detail' g.user_id %}" class ="btn"  >Startup:{{g.startup_entity_name}}</a>
+                    
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endif %} 
+                    {% endif %} 
+                {% endfor %}      
+                    </div>
+                </div>
+            </div>        
+            
+        </main><!-- // .o-page__content -->
+        
+    
+
+{% endblock %}   
+
+

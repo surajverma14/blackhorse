@@ -1,0 +1,113 @@
+
+{% load staticfiles %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+    
+        <a class="navbar-brand waves-effect" href="#">
+          <img src="{% static '/img/HRS.PNG' %}" width="60" height="60" class="d-inline-block align-center" alt="">
+          BlackHorse Capital 
+        </a>
+    
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          {% comment %} <li class="nav-item active">
+            <a class="nav-link waves-effect" href="/">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/checkout">
+            Checkout</a>
+          </li> {% endcomment %}
+        </ul>
+
+        <!-- Right -->
+        <ul class="nav navbar-nav navbar-right">
+            									
+						
+          <!-- Outer Menu Link -->
+<li class="visible-lg visible-md drop-down mega-dropdown" style="margin-right:20px ;">
+<a href="/" class="sliding-u-l-r is-active">HOME</a>
+
+
+</li>
+<li class="visible-lg visible-md dropdown mega-dropdown" style="margin-right:20px ;">
+<a>SOLUTIONS</a>
+<div class="mega-menu-cursor-border">
+<div class="mega-menu-cursor"></div>
+</div>
+<!-- Load inner links / recursively walk through menu tree -->
+<span class="indicator"></span>
+<ul class="dropdown-menu mega-dropdown-menu row">
+<li>
+
+<!-- Mega Menu Header-->											
+</li><li class="active"><a href="{% url 'account_login' %}" value="startup" style="margin-top:10px ;" id="startup">Start-Ups</a></li>
+<li><a href="{% url 'account_login'   %}" value="investor" style="margin-top:10px ;" id="startup">Investors</a></li>
+<!-- Mega Menu Header-->
+</ul>
+
+          <!-- Outer Menu Link -->
+</li><li class="visible-lg visible-md drop-down mega-dropdown"  style="margin-right:20px ;">
+  <a href="{% url 'leadership' %}" class="sliding-u-l-r">TEAM</a>
+  
+  
+  
+            <!-- Outer Menu Link -->
+  </li><li class="visible-lg visible-md drop-down mega-dropdown"  style="margin-right:20px ;">
+  <a href="{% url 'contact'   %}" class="sliding-u-l-r" >CONTACT</a>
+  
+  
+  
+  
+  </li>
+{% if request.user.is_authenticated %}
+<li class="visible-lg visible-md drop-down mega-dropdown"  style="margin-right:20px ;">
+  <a  href="{% url 'account_logout' %}" class="sliding-u-l-r" >LOGOUT</a>
+</li>
+{% endif %}
+</ul>
+        <!-- <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+              <span class="clearfix d-none d-sm-inline-block"> Home </span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Solution
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Another action</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+              <span class="clearfix d-none d-sm-inline-block"> Team </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_signup' %}">
+              <span class="clearfix d-none d-sm-inline-block"> Contact </span>
+            </a>
+          </li>
+       
+        </ul> -->
+      </div>
+
+    </div>
+  </nav>

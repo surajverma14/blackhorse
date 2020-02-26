@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block head_title %}{% endblock %}</title>
+  {% block extra_head %}
+  {% endblock %}
+ 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link href="{% static 'css/main.min.css' %}" rel="stylesheet">
+   <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet"> 
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+ 
+ 
+ <link href="{% static 'css/css_4iddj7nSU-JF25fO29i6wMT6uQ1PcbGpu2JE4Y3_mME-q0fw62.css' %}" rel="stylesheet">
+  <link href="{% static 'css/css_82QNz3isZauK2z7uRssc53Bs_g5IxmONDHsLVxMTLtw-q0fw62.css' %}" rel="stylesheet">
+  <link href="{% static 'css/css_iuVC5ISsQ3gQ9CzqE9FV3tZ0TTCzuVPjILNY0_MrJpA-q0fw62.css' %}" rel="stylesheet">
+  <link href="{% static 'css/css_P5lqwXbycnV9ac51QWgSNB3HbTZ0BM8UvJYpISe2Xr8-q0fw62.css' %}" rel="stylesheet">
+  <link href="{% static 'css/css_pLHDtSam567z2oJNI3edPuEjcwqxh1cpbDi9jiVY_uo-q0fw62.css' %}" rel="stylesheet">
+
+   <!-- Google Font -->
+
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+    .sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 50px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+.sidebar a.active {
+  background-color: white;
+  color: black;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 50px;}
+  .sidebar a {font-size: 18px;}
+}
+
+  </style>
+ 
+</head>
+
+{% include "navbar.html" %}
+
+<body>
+
+    <div class="mt-5 pt-4">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block extra_body %}
+    {% endblock %}
+
+    {% include "footer.html" %}
+    {% include "scripts.html" %}
+
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+   
+
+</body>
+</html>

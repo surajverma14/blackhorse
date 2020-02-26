@@ -1,0 +1,40 @@
+{% extends "startup/base.html" %}
+
+    {% block content %}   
+    {% include "startup/includes/sidebar.html" %}
+    {% load staticfiles %}
+
+
+        <main class="o-page__content">
+         
+            <div class="container">
+                <h3 style="text-align: center;color:black;margin-top: 20px;">Opportunties</h3>
+                <div class="row u-mb-large">
+                    <div class="col-12">
+
+                {% for g in investorthesis %}
+                    {% if user.entity.startup_industry == g.investor_industry %}
+                    {% if user.entity.startup_stage == g.investor_stage %}
+                    {% if user.entity.startup_funding_need == g.investor_ticket_size %}
+                    {% if user.entity.startup_location == g.investor_geography %}
+                    {% if user.entity.startup_business_model == g.investor_business_model %} 
+                       
+                    <a href="{% url 'investor-detail' g.user.investordetail.user_id %}" class ="btn"  >Investor: {{g.user}}  </a>
+                    
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}  
+                {% endfor %}      
+                    </div>
+                </div>
+            </div>        
+
+            
+            
+        </main><!-- // .o-page__content -->
+        
+        
+    {% endblock %}   
+
